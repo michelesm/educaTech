@@ -18,9 +18,9 @@ class Aluno(models.Model):
     #turma = models.ForeignKey('cursos.Turma', on_delete=models.CASCADE)
     foto = models.ImageField(upload_to='alunos/', blank=True, null=True)
 
-    '''def __str__(self):
-        return f"{self.nome_completo} - Turma: {self.turma}"
-
+    def __str__(self):
+        return f"{self.nome_completo} - CPF: {self.cpf}"
+'''
     def save(self, *args, **kwargs):
         if self.turma and not Turma.objects.filter(id=self.turma.id).exists():
             raise ValueError("A turma atribuída ao aluno não existe.")

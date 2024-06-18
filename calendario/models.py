@@ -3,7 +3,7 @@ from django.db import models
 class Evento(models.Model):
     TIPO_CHOICES = [
         ('feriado', 'Feriado'),
-        ('evento_escolar', 'Evento Escolar'),
+        ('evento', 'Evento'),
         ('reuniao', 'Reunião'),
     ]
 

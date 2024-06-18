@@ -23,6 +23,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,5 +35,10 @@ urlpatterns = [
     path('documentos/', include('documentos.urls')),
     path('usuarios/', include('usuarios.urls')),
     path('logs/', include('logs.urls')),
+    path('login/', views.login_view, name='login'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('login/', views.login_view, name='login'),
+    path('accounts/', include('django.contrib.auth.urls')),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
