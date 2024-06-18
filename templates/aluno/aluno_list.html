@@ -4,23 +4,28 @@
   <i class="icon">👤</i>
   <h2 class="title">Alunos</h2>
   <h1>Lista de Alunos</h1>
-  <ul>
-      <div class="card">
-        {% for aluno in object_list %}
-          <li>
-            {{ aluno.nome_completo }} ({{ aluno.cpf }})
-            <a href="{% url 'aluno:aluno_detail' aluno.pk %}">Ver detalhes</a>
-            <a href="{% url 'aluno:aluno_update' aluno.pk %}">Atualizar</a>
-            <a href="{% url 'aluno:aluno_delete' aluno.pk %}">Excluir</a>
-          </li>
-        {% endfor %}
-      </div>
-  </ul>
-    <div class="card">
-        <a href="{% url 'aluno:aluno_create' %}" class="button">Criar novo aluno</a>
-    </div>
-    <div class="card">
-        <a href="{% url 'home' %}" class="button">Voltar</a>
-    </div>
-
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Ver Detalhes</th>
+        <th>Atualizar</th>
+        <th>Excluir</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for aluno in object_list %}
+      <tr>
+        <td>{{ aluno.nome_completo }}</td>
+        <td><a href="{% url 'aluno:aluno_detail' aluno.pk %}">Ver detalhes</a></td>
+        <td><a href="{% url 'aluno:aluno_update' aluno.pk %}">Atualizar</a></td>
+        <td><a href="{% url 'aluno:aluno_delete' aluno.pk %}">Excluir</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="button-container">
+    <a href="{% url 'aluno:aluno_create' %}" class="button">Criar novo aluno</a>
+    <a href="{% url 'home' %}" class="button">Voltar</a>
+  </div>
 {% endblock %}

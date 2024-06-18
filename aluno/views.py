@@ -11,6 +11,8 @@ def aluno_detail(request, pk):
 class AlunoListView(ListView):
     model = Aluno
     template_name = 'aluno/aluno_list.html'
+    context_object_name = 'object_list'
+    ordering = ['nome_completo']
 
 class AlunoDetailView(DetailView):
     model = Aluno
