@@ -1,57 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secretaria de Ciência, Tecnologia e Inovação</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: rgba(76, 175, 80, 0.8); /* Cor em rgba com transparência */
-            background-image: url('static/imagens/imagem1.png');
-            background-size: 100%;
-            background-position: center;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-        }
+{% extends 'base.html' %}
 
-        .container {
-            display: flex;
-            gap: 30px;
-        }
-
-        .card {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .icon {
-            font-size: 4rem;
-            margin-bottom: 10px;
-        }
-
-        .title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #8B9467;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>EducaTech</h1>
+{% block content %}
     <div class="container">
         <div class="card">
             <i class="icon">👤</i>
@@ -76,5 +25,4 @@
             <h2 class="title">Documentos</h2>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}
