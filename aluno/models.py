@@ -16,7 +16,7 @@ class Aluno(models.Model):
     email = models.EmailField(max_length=254, blank=True, null=True)
     nome_responsavel = models.CharField(max_length=100, blank=True, null=True)
     #turma = models.ForeignKey('cursos.Turma', on_delete=models.CASCADE)
-    foto = models.ImageField(upload_to='alunos/', blank=True, null=True)
+    #foto = models.ImageField(upload_to='alunos/', blank=True, null=True)
 
     def __str__(self):
         return f"{self.nome_completo} - CPF: {self.cpf}"

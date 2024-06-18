@@ -18,6 +18,11 @@ class AlunoDetailView(DetailView):
     model = Aluno
     template_name = 'aluno/aluno_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['aluno'] = self.get_object()
+        return context
+
 class AlunoCreateView(CreateView):
     model = Aluno
     fields = ('nome', 'cpf', 'email',)  # campos que você deseja incluir
