@@ -5,20 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secretaria de Ciência, Tecnologia e Inovação</title>
     <style>
-        /* body {
-            font-family: Arial, sans-serif;
-            background-color: rgba(76, 175, 80, 0.8);
-            background-image: url('static/imagens/imagem1.png');
-            background-size: 100%;
-            background-position: center;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-*/      body {
+      body {
             font-family: Arial, sans-serif;
             background-color: rgba(76, 175, 80, 0.8); /* Cor em rgba com transparência */
             background-image: url('static/imagens/imagem1.png');
@@ -84,14 +71,10 @@
     <h1>EducaTech</h1>
     <div class="container">
         <div class="card">
-            <i class="icon">👤</i>
-            <h2 class="title">Alunos</h2>
             {% block content %}
             {% endblock %}
         </div>
     </div>
-    <div class="container">
-        <a href="{% url 'home' %}" class="button">Voltar</a>
-    </div>
+
 </body>
 </html>
