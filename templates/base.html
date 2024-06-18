@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secretaria de Ciência, Tecnologia e Inovação</title>
+    <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(76, 175, 80, 0.8);
+            background-image: url('static/imagens/imagem1.png');
+            background-size: 100%;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+*/      body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(76, 175, 80, 0.8); /* Cor em rgba com transparência */
+            background-image: url('static/imagens/imagem1.png');
+            background-size: 100%;
+            background-position: center;
+            color: darkgreen;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            gap: 30px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: darkgreen;
+        }
+
+        .button {
+            display: block;
+            margin: 0 auto;
+            background-color: #f789a1;
+            color: darkgreen;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>EducaTech</h1>
+    <div class="container">
+        <div class="card">
+            <i class="icon">👤</i>
+            <h2 class="title">Alunos</h2>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="container">
+        <a href="{% url 'home' %}" class="button">Voltar</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!-- aluno_detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Alunos</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card">
+          <h2>Informações do Aluno</h2>
+          <ul>
+            <li><strong>Nome:</strong> {{ aluno.nome }}</li>
+            <li><strong>Matrícula:</strong> {{ aluno.matricula }}</li>
+            <li><strong>Curso:</strong> {{ aluno.curso }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="card">
+          <h2>Disciplinas</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Disciplina</th>
+                <th>Nota</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for disciplina in aluno.disciplinas.all %}
+              <tr>
+                <td>{{ disciplina.nome }}</td>
+                <td>{{ disciplina.nota }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

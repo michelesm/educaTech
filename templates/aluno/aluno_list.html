@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Lista de Alunos</h1>
+  <ul>
+    {% for aluno in object_list %}
+      <li>
+        {{ aluno.nome }} ({{ aluno.cpf }})
+        <a href="{% url 'aluno:aluno_detail' aluno.pk %}">Ver detalhes</a>
+        <a href="{% url 'aluno:aluno_update' aluno.pk %}">Atualizar</a>
+        <a href="{% url 'aluno:aluno_delete' aluno.pk %}">Excluir</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'aluno:aluno_create' %}">Criar novo aluno</a>
+{% endblock %}
