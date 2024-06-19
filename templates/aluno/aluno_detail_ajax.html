@@ -1,0 +1,14 @@
+<ul>
+  <li><strong>Nome:</strong> {{ aluno.nome_completo }}</li>
+  <li><strong>CPF:</strong> {{ aluno.cpf }}</li>
+  <li><strong>RG:</strong> {{ aluno.rg }}</li>
+  <li><strong>Data de Nascimento:</strong> {{ aluno.data_nascimento }}</li>
+</ul>
+{% if aluno.matricula_set.exists %}
+<ul>
+  <li><strong>Turma:</strong> {{ aluno.matricula_set.first.turma.turma_nome }}</li>
+  <li><strong>Curso:</strong> {{ aluno.matricula_set.first.turma.curso.nome_curso }}</li>
+</ul>
+{% else %}
+<p>Nenhum registro de matrícula encontrado.</p>
+{% endif %}

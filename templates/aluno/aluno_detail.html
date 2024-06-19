@@ -18,7 +18,7 @@
       </div>
       <div class="col-md-9">
         <div class="card">
-          <h2>Matrícula</h2>
+          <h2>Turmas em andamento</h2>
           {% if aluno.matricula_set.exists %}
             <ul>
               <li><strong>Turma:</strong> {{ aluno.matricula_set.first.turma.turma_nome }}</li>
