@@ -26,8 +26,6 @@ class ProfessorDetailView(DetailView):
         return context
 
 
-
-
 class ProfessorCreateView(CreateView):
     model = Professor
     fields = ('nome', 'cpf', 'email',)  # campos que você deseja incluir
@@ -38,7 +36,6 @@ class ProfessorDeleteView(DeleteView):
     model = Professor
     template_name = 'professor/professor_confirm_delete.html'
     success_url = '/professor/'  # redireciona para a lista de alunos após exclusão
-
 
 
 class ProfessorEditView(View):

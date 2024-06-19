@@ -25,15 +25,33 @@
       <tr>
         <td>{{ professor.nome }}</td>
         <td>
-          <a href="{% url 'professor:professor_detail' professor.pk %}">Detalhes</a>
+            <a href="#" onclick="document.getElementById('modal-detail-{{ professor.pk }}').showModal()">Ver detalhes</a>
+            <dialog id="modal-detail-{{ professor.pk }}">
+                <div style="text-align: center;">
+                  {% include 'professor/professor_detail.html' with professor=professor %}
+                </div>
+            <button style="display: block; margin: 0 auto;" onclick="document.getElementById('modal-detail-{{ professor.pk }}').close()">Fechar</button>
+            </dialog>
 
         </td>
+
         <td><a href="{% url 'professor:professor_edit' professor.pk %}">Editar</a></td>
-         <td><a href="{% url 'professor:professor_delete' professor.pk %}">Excluir</a></td>
+
+        <td><a href="{% url 'professor:professor_delete' professor.pk %}">Excluir</a></td>
+
       </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
+
+    <div class="card">
+      <div class="button-container">
+        <a href="{% url 'professor:professor_create' %}" class="button">Cadastrar novo professor</a><br>
+      </div>
+      <div class="button-container">
+        <a href="{% url 'home' %}" class="button">Voltar</a>
+      </div>
+    </div>
   </div>
 {% endblock %}
