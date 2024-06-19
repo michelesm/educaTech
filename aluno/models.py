@@ -9,7 +9,7 @@ class Aluno(models.Model):
     data_nascimento = models.DateField()
     nome_pai = models.CharField(max_length=100, blank=True, null=True)
     nome_mae = models.CharField(max_length=100, blank=True, null=True)
-    cpf = models.CharField(max_length=11, blank=True, null=True)
+    cpf = models.CharField(max_length=15, blank=True, null=True)
     rg = models.CharField(max_length=20, blank=True, null=True)
     endereco = models.CharField(max_length=200)
     telefone_contato = models.CharField(max_length=20)
