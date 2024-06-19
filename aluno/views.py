@@ -1,15 +1,12 @@
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .alunoForm import AlunoForm
 from .models import Aluno
-
-'''
-def aluno_detail(request, pk):
-    aluno = Aluno.objects.get(pk=pk)
-    return render(request, 'aluno/aluno_detail.html', {'aluno': aluno})'''
 
 
 class AlunoListView(ListView):
@@ -57,3 +54,19 @@ class AlunoEditView(View):
         else:
             print(form.errors)  # Verifique os erros de validação
         return render(request, 'aluno/aluno_form.html', {'form': form})
+
+'''
+class AlunoUpdateView(UpdateView):
+    model = Aluno
+    form_class = AlunoForm
+    template_name = 'aluno/aluno_form.html'
+    success_url = reverse_lazy('aluno:aluno_list')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Aluno, pk=self.kwargs['pk'])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = AlunoForm(instance=self.get_object())
+        return context
+'''

@@ -3,12 +3,9 @@ from .models import Aluno
 
 
 class AlunoForm(forms.ModelForm):
-
     class Meta:
         model = Aluno
-        fields = ('nome_completo', 'cpf', 'email',)
-        widgets = {
-            'nome_completo': forms.TextInput(attrs={'class': 'form-control'}),
-            'cpf': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-        }
+        fields = ['nome_completo', 'cpf', 'email', 'data_nascimento', 'nome_pai', 'nome_mae', 'rg', 'endereco',
+                  'telefone_contato', 'nome_responsavel']
+
+

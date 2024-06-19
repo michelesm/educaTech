@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="card">
+        <span>Filtrar:</span><br>
+        <a href="#">Por curso</a><br>
+        <a href="#">Por Turma</a><br>
+        <a href="#">Por Ano</a>
+        </div>
+
+
+<div class="card">
+  <h1>Lista de Professores</h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Professor</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for professor in professores %}
+      <tr>
+        <td>{{ professor.nome }}</td>
+        <td>
+          <a href="{% url 'professor:professor_detail' professor.pk %}">Detalhes</a>
+
+        </td>
+        <td><a href="{% url 'professor:professor_edit' professor.pk %}">Editar</a></td>
+         <td><a href="{% url 'professor:professor_delete' professor.pk %}">Excluir</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+  </div>
+{% endblock %}

@@ -1,10 +1,20 @@
 
 {% extends 'aluno/aluno_list.html' %}
 {% block content %}
-  <h1>Formulário de edição do aluno</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Salvar alterações</button>
-  </form>
+  <title>Formulário de edição do aluno</title>
+    <div class="card">
+        <form method="post" action="">
+            {% csrf_token %}
+            <table>
+                {% for field in form %}
+                    <tr>
+                        <td><label for="{{ field.id_for_label }}">{{ field.label }}</label></td>
+                        <td>{{ field }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <button type="submit">Salvar alterações</button>
+            <button type="button" onclick="history.back()">Cancelar</button>
+        </form>
+    </div>
 {% endblock %}

@@ -10,4 +10,5 @@ urlpatterns = [
     path('<int:pk>/', views.AlunoDetailView.as_view(), name='aluno_detail'),
     path('<pk>/delete/', views.AlunoDeleteView.as_view(), name='aluno_delete'),
     path('aluno/<pk>/edit/', views.AlunoEditView.as_view(), name='aluno_edit'),
+    #path('<int:pk>/update/', views.AlunoUpdateView.as_view(), name='aluno_update'),
 ]

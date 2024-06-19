@@ -12,42 +12,38 @@
     </div>
 
     <div class="card">
-        <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Aluno</th>
-                <th>Opções</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-
-         <table class="table table-bordered">
-
-            <tbody>
-              {% for aluno in object_list %}
-              <tr>
-                <td>{{ aluno.nome_completo }}</td>
-                <td>
-                    <a href="#" onclick="document.getElementById('modal-{{ aluno.pk }}').showModal()">Ver detalhes</a>
-                    <dialog id="modal-{{ aluno.pk }}">
-                        <div style="text-align: center;">
-                            {% include 'aluno/aluno_detail.html' with aluno=aluno %}
-                        </div>
-                        <button style="display: block; margin: 0 auto;" onclick="document.getElementById('modal-{{ aluno.pk }}').close()">Fechar</button>
-                    </dialog>
-                </td>
-                <td>
-                    <a href="{% url 'aluno:aluno_edit' aluno.pk %}">Editar</a>
-                </td>
-                  <td>
-                  <a href="{% url 'aluno:aluno_delete' aluno.pk %}">Excluir</a>
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Aluno</th>
+            <th>Opções</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for aluno in object_list %}
+          <tr>
+            <td>{{ aluno.nome_completo }}</td>
+            <td>
+              <a href="#" onclick="document.getElementById('modal-detail-{{ aluno.pk }}').showModal()">Ver detalhes</a>
+              <dialog id="modal-detail-{{ aluno.pk }}">
+                <div style="text-align: center;">
+                  {% include 'aluno/aluno_detail.html' with aluno=aluno %}
+                </div>
+                <button style="display: block; margin: 0 auto;" onclick="document.getElementById('modal-detail-{{ aluno.pk }}').close()">Fechar</button>
+              </dialog>
+            </td>
+            <td>
+                <a href="{% url 'aluno:aluno_edit' aluno.pk %}">Editar</a>
+            </td>
+            <td>
+              <a href="{% url 'aluno:aluno_delete' aluno.pk %}">Excluir</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
 
     <div class="card">
@@ -59,7 +55,4 @@
       </div>
     </div>
   </div>
-
-  <!-- Incluindo modais ao final para evitar que o conteúdo seja carregado diretamente na tabela -->
-
 {% endblock %}
