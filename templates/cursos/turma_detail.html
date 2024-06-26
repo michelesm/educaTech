@@ -1,9 +1,62 @@
+<!-- turma_detail.html -->
+
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>{{ turma.turma_nome }}</h1>
-  <p>Professor: {{ turma.professor_responsavel }}</p>
-  <p>Horário: {{ turma.get_horario_display }}</p>
-  <p>Data de Início: {{ turma.data_inicio }}</p>
-  <p>Quantidade de Aulas: {{ turma.quantidade_aulas }}</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card">
+          <h2>Informações da Turma</h2>
+          <table border="1" cellpadding="5" cellspacing="0">
+            <tr>
+              <th>Informação</th>
+              <th>Valor</th>
+            </tr>
+            <tr>
+              <td>Nome:</td>
+              <td>{{ turma.turma_nome }}</td>
+            </tr>
+            <tr>
+              <td>Professor:</td>
+              <td>{{ turma.professor_responsavel }}</td>
+            </tr>
+            <tr>
+              <td>Horário:</td>
+              <td>{{ turma.get_horario_display }}</td>
+            </tr>
+            <tr>
+              <td>Data de Início:</td>
+              <td>{{ turma.data_inicio }}</td>
+            </tr>
+            <tr>
+              <td>Quantidade de Aulas:</td>
+              <td>{{ turma.quantidade_aulas }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="card">
+          <h2>Alunos Matriculados</h2>
+          {% if turma.matricula_set.exists %}
+            <table border="1" cellpadding="5" cellspacing="0">
+              <tr>
+                <th>Aluno</th>
+                <th>CPF</th>
+              </tr>
+              {% for matricula in turma.matricula_set.all %}
+                <tr>
+                  <td>{{ matricula.aluno.nome_completo }}</td>
+                  <td>{{ matricula.aluno.cpf }}</td>
+                </tr>
+              {% endfor %}
+            </table>
+          {% else %}
+            <p>Nenhum aluno matriculado nesta turma.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Detalhes da Matrícula</h1>
+  <p>Aluno: {{ matricula.aluno.nome_completo }}</p>
+  <p>Data de Matrícula: {{ matricula.data_matricula }}</p>
+  <p>Ano Letivo: {{ matricula.ano_letivo }}</p>
+  <p>Curso: {{ matricula.curso.nome_curso }}</p>
+  <p>Turma: {{ matricula.turma.turma_nome }}</p>
+  <p>Status: {{ matricula.status }}</p>
+  <a href="{% url 'matricula:matricula_edit' matricula.pk %}">Editar</a>
+  <a href="{% url 'matricula:matricula_delete' matricula.pk %}">Excluir</a>
+{% endblock %}

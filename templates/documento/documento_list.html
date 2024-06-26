@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <div class="container">
+    <div class="card">
+      <span>Filtrar:</span><br>
+      <a href="#">Por aluno</a><br>
+      <a href="#">Por tipo de documento</a><br>
+      <a href="#">Por data de emissão</a>
+    </div>
+
+    <div class="card">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Documento</th>
+            <th>Aluno</th>
+            <th>Tipo</th>
+            <th>Data de Emissão</th>
+            <th>Opções</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for documento in documentos %}
+          <tr>
+            <td>{{ documento }}</td>
+            <td>{{ documento.aluno.nome_completo }}</td>
+            <td>{{ documento.tipo }}</td>
+            <td>{{ documento.data_emissao }}</td>
+            <td>
+              <a href="#" onclick="document.getElementById('modal-detail-{{ documento.pk }}').showModal()">Ver detalhes</a>
+              <dialog id="modal-detail-{{ documento.pk }}">
+                <div style="text-align: center;">
+                  {% include 'documento/documento_detail.html' with documento=documento %}
+                </div>
+                <button style="display: block; margin: 0 auto;" onclick="document.getElementById('modal-detail-{{ documento.pk }}').close()">Fechar</button>
+              </dialog>
+            </td>
+            <td>
+                <a href="#">Editar</a>
+            </td>
+            <td>
+              <a href="#">Excluir</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="button-container">
+        <a href="#" class="button">Cadastrar novo documento</a><br>
+      </div>
+      <div class="button-container">
+        <a href="{% url 'home' %}" class="button">Voltar</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

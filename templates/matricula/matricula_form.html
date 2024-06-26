@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Cadastrar Matrícula</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#id_curso').on('change', function(){
+        var curso_id = $(this).val();
+        $.ajax({
+          type: 'GET',
+          url: '{% url "matricula:get_turmas" %}',
+          data: {'curso_id': curso_id},
+          success: function(data){
+            $('#id_turma').html('');
+            $.each(data, function(index, item){
+              $('#id_turma').append('<option value="'+item.id+'">'+item.nome+'</option>');
+            });
+          }
+        });
+      });
+    });
+  </script>
+{% endblock %}

@@ -3,15 +3,9 @@ from aluno.models import Aluno  # Certifique-se de substituir 'aluno' pelo nome 
 
 class Documento(models.Model):
     TIPOS_DOCUMENTO = [
-        ('historico', 'Histórico Escolar'),
         ('declaracao', 'Declaração de Matrícula'),
-        ('boletim', 'Boletim Escolar'),
-        ('atestado', 'Atestado de Matrícula'),
+        ('comparecimento', 'Declaração de Comparecimento'),
         ('certificado', 'Certificado de Conclusão'),
-        ('contagem', 'Contagem de Tempo'),
-        ('ata', 'Ata de Reunião de Pais'),
-        ('outros', 'Outros')
-        # Adicione outros tipos conforme necessário
     ]
 
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)

@@ -7,9 +7,12 @@ class MatriculaForm(forms.ModelForm):
         model = Matricula
         fields = ['aluno', 'data_matricula', 'ano_letivo', 'curso', 'turma', 'status']
 
+    turma = forms.ModelChoiceField(queryset=Turma.objects.all(), empty_label="Selecione uma turma")
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['turma'].queryset = Turma.objects.none()
+        model = Matricula
 
         if 'curso' in self.data:
             try:

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <div class="container">
+    <div class="card">
+      <span>Filtrar:</span><br>
+      <a href="#">Por aluno</a><br>
+      <a href="#">Por curso</a><br>
+      <a href="#">Por Turma</a><br>
+    </div>
+
+    <div class="card">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Matrícula</th>
+            <th>Aluno</th>
+            <th>Curso</th>
+            <th>Turma</th>
+            <th>Opções</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for matricula in matriculas %}
+          <tr>
+            <td>{{ matricula.id }}</td>
+            <td>{{ matricula.aluno.nome_completo }}</td>
+            <td>{{ matricula.curso.nome_curso }}</td>
+            <td>{{ matricula.turma.turma_nome }}</td>
+            <td>
+              <a href="#" onclick="document.getElementById('modal-detail-{{ matricula.pk }}').showModal()">Ver detalhes</a>
+              <dialog id="modal-detail-{{ matricula.pk }}">
+                <div style="text-align: center;">
+                  {% include 'matricula/matricula_detail.html' with matricula=matricula %}
+                </div>
+                <button style="display: block; margin: 0 auto;" onclick="document.getElementById('modal-detail-{{ matricula.pk }}').close()">Fechar</button>
+              </dialog>
+            </td>
+            <td>
+                <a href="{% url 'matricula:matricula_edit' matricula.pk %}">Editar</a>
+            </td>
+            <td>
+              <a href="{% url 'matricula:matricula_delete' matricula.pk %}">Excluir</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="button-container">
+        <a href="{% url 'matricula:matricula_create' %}" class="button">Cadastrar nova matrícula</a><br>
+      </div>
+      <div class="button-container">
+        <a href="{% url 'home' %}" class="button">Voltar</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
