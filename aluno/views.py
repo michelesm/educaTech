@@ -28,9 +28,11 @@ class AlunoDetailView(DetailView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class AlunoCreateView(CreateView):
     model = Aluno
-    fields = ('nome', 'cpf', 'email',)  # campos que você deseja incluir
+    fields = ('nome_completo', 'cpf', 'email', 'data_nascimento', 'nome_pai', 'nome_mae', 'rg', 'endereco',
+                  'telefone_contato', 'nome_responsavel')  # campos que você deseja incluir
     template_name = 'aluno/aluno_form.html'
 
 
