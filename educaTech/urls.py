@@ -39,6 +39,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('login/', views.login_view, name='login'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('cursos/', include('cursos.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

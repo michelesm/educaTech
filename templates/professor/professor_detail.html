@@ -28,7 +28,20 @@
           </table>
         </div>
       </div>
-
+    <div class="col-md-9">
+        <div class="card">
+            <h2>Turmas em andamento</h2>
+            <ul>
+                {% for turma in professor.turma_set.all %}
+                  <li>
+                    {{ turma }} ({{ turma.curso.nome_curso }})
+                  </li>
+                {% empty %}
+                  <li>Nenhuma turma associada</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
     </div>
   </div>
 {% endblock %}

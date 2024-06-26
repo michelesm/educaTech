@@ -1,7 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
-
 from professor.ProfessorForm import ProfessorForm
 from professor.models import Professor
 
@@ -9,6 +10,7 @@ from professor.models import Professor
 # Create your views here.
 
 
+@method_decorator(login_required, name='dispatch')
 class ProfessorListView(ListView):
     model = Professor
     template_name = 'professor/professor_list.html'
@@ -16,6 +18,7 @@ class ProfessorListView(ListView):
     ordering = ['nome']
 
 
+@method_decorator(login_required, name='dispatch')
 class ProfessorDetailView(DetailView):
     model = Professor
     template_name = 'professor/professor_detail.html'
@@ -26,18 +29,21 @@ class ProfessorDetailView(DetailView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class ProfessorCreateView(CreateView):
     model = Professor
     fields = ('nome', 'cpf', 'email',)  # campos que você deseja incluir
     template_name = 'professor/professor_form.html'
 
 
+@method_decorator(login_required, name='dispatch')
 class ProfessorDeleteView(DeleteView):
     model = Professor
     template_name = 'professor/professor_confirm_delete.html'
     success_url = '/professor/'  # redireciona para a lista de alunos após exclusão
 
 
+@method_decorator(login_required, name='dispatch')
 class ProfessorEditView(View):
     def get(self, request, pk):
         professor = Professor.objects.get(pk=pk)

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+      <div class="col-md-3">
+          <h2>Informações do Curso</h2>
+          <table border="1" cellpadding="5" cellspacing="0">
+            <tr>
+              <th>Informação</th>
+              <th>Valor</th>
+            </tr>
+            <tr>
+              <h1>Detalhes do Curso</h1>
+              <td>Nome:</td>
+              <td>{{ curso.nome_curso }}</td>
+            </tr>
+            <tr>
+              <td>Descrição:</td>
+              <td>{{ curso.descricao }}</td>
+            </tr>
+          </table>
+        </div>
+      <div class="col-md-9">
+        <div class="card">
+          <h2>Turmas em andamento</h2>
+            {% for turma in curso.turma_set.all %}
+                <table>
+                    <tr>
+                    <th>Turma</th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <td>Nome:</td>
+                    <td>{{ turma.turma_nome }}</td>
+                  </tr>
+                  <tr>
+                    <td>Ano:</td>
+                    <td>{{ turma.turma_ano }}</td>
+                  </tr>
+                  <tr>
+                    <td>Professor Responsável:</td>
+                    <td>{{ turma.professor_responsavel }}</td>
+                  </tr>
+                  <tr>
+                    <td>Dia da Semana:</td>
+                    <td>{{ turma.dia_da_semana }}</td>
+                  </tr>
+                  <tr>
+                    <td>Horário:</td>
+                    <td>{{ turma.horario }}</td>
+                  </tr>
+                  {% empty %}
+                  <tr>
+                    <td colspan="2">Nenhuma turma cadastrada para este curso.</td>
+                  </tr>
+                </table>
+            {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}

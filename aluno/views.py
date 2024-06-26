@@ -9,6 +9,7 @@ from .alunoForm import AlunoForm
 from .models import Aluno
 
 
+@method_decorator(login_required, name='dispatch')
 class AlunoListView(ListView):
     model = Aluno
     template_name = 'aluno/aluno_list.html'
@@ -16,6 +17,7 @@ class AlunoListView(ListView):
     ordering = ['nome_completo']
 
 
+@method_decorator(login_required, name='dispatch')
 class AlunoDetailView(DetailView):
     model = Aluno
     template_name = 'aluno/aluno_detail.html'
@@ -32,6 +34,7 @@ class AlunoCreateView(CreateView):
     template_name = 'aluno/aluno_form.html'
 
 
+@method_decorator(login_required, name='dispatch')
 class AlunoDeleteView(DeleteView):
     model = Aluno
     template_name = 'aluno/aluno_confirm_delete.html'
