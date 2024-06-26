@@ -35,7 +35,6 @@ urlpatterns = [
     path('documentos/', include('documentos.urls')),
     path('usuarios/', include('usuarios.urls')),
     path('logs/', include('logs.urls')),
-    path('login/', views.login_view, name='login'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('login/', views.login_view, name='login'),
     path('accounts/', include('django.contrib.auth.urls')),

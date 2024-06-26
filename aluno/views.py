@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import View
@@ -34,13 +35,18 @@ class AlunoCreateView(CreateView):
     fields = ('nome_completo', 'cpf', 'email', 'data_nascimento', 'nome_pai', 'nome_mae', 'rg', 'endereco',
                   'telefone_contato', 'nome_responsavel')  # campos que você deseja incluir
     template_name = 'aluno/aluno_form.html'
+    success_url = reverse_lazy('aluno:aluno_list')
 
 
-@method_decorator(login_required, name='dispatch')
 class AlunoDeleteView(DeleteView):
     model = Aluno
     template_name = 'aluno/aluno_confirm_delete.html'
-    success_url = '/aluno/'  # redireciona para a lista de alunos após exclusão
+    success_url = reverse_lazy('aluno:aluno_list')
+
+    def delete(self, request, *args, **kwargs):
+        response = super().delete(request, *args, **kwargs)
+        messages.success(request, 'Aluno excluído com sucesso.')
+        return HttpResponseRedirect(self.success_url)
 
 
 @method_decorator(login_required, name='dispatch')
@@ -59,19 +65,3 @@ class AlunoEditView(View):
         else:
             print(form.errors)  # Verifique os erros de validação
         return render(request, 'aluno/aluno_form.html', {'form': form})
-
-'''
-class AlunoUpdateView(UpdateView):
-    model = Aluno
-    form_class = AlunoForm
-    template_name = 'aluno/aluno_form.html'
-    success_url = reverse_lazy('aluno:aluno_list')
-
-    def get_object(self, queryset=None):
-        return get_object_or_404(Aluno, pk=self.kwargs['pk'])
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = AlunoForm(instance=self.get_object())
-        return context
-'''

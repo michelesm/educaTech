@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+  <div class="container">
+    <h1>Excluir aluno</h1>
+    <p>Tem certeza que deseja excluir o aluno {{ object.nome_completo }}? Essa ação não pode ser desfeita.</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="button" onclick="deleteAluno({{ object.pk }})">Excluir</button>
+      <a href="{% url 'aluno:aluno_list' %}" class="button">Cancelar</a>
+    </form>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    function deleteAluno(pk) {
+      if (confirm("Tem certeza que deseja excluir o aluno?")) {
+        const form = document.getElementById('aluno-delete-form-' + pk);
+        form.submit();
+      }
+    }
+  </script>
+{% endblock %}
