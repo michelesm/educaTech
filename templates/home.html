@@ -9,24 +9,36 @@
             </a>
         </div>
         <div class="card">
-            <i class="icon">📚</i>
-            <a href="{% url 'professor:professor_list' %}">
-            <h2 class="title">Professores</h2>
-            </a>
-        </div>
-        <div class="card">
             <i class="icon">📑</i>
             <a href="{% url 'curso_list' %}">
-            <h2 class="title">Cursos</h2>
+                <h2 class="title">Cursos</h2>
             </a>
         </div>
         <div class="card">
             <i class="icon">📝</i>
-            <h2 class="title" >Matrícula</h2>
-        </div>
-        <div class="card">
-            <i class="icon">📁</i>
             <h2 class="title">Documentos</h2>
         </div>
+        <div class="card">
+            <i class="icon">📝</i>
+            <h2 class="title">Matrícula</h2>
+        </div>
+        <div class="card">
+            <i class="icon">📚</i>
+            <a href="{% url 'professor:professor_list' %}">
+                <h2 class="title">Professores</h2>
+            </a>
+        </div>
+        <div class="card">
+            <i class="icon">👥</i>
+            <a href="{% url 'turma_list' %}">
+                <h2 class="title">Turmas</h2>
+            </a>
+        </div>
+
+    </div>
+    <div class="logout">
+        <a href="{% url 'logout' %}">
+            <button class="btn btn-danger">Logout</button>
+        </a>
     </div>
 {% endblock %}

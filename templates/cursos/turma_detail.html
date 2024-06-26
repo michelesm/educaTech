@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ turma.turma_nome }}</h1>
+  <p>Professor: {{ turma.professor_responsavel }}</p>
+  <p>Horário: {{ turma.get_horario_display }}</p>
+  <p>Data de Início: {{ turma.data_inicio }}</p>
+  <p>Quantidade de Aulas: {{ turma.quantidade_aulas }}</p>
+{% endblock %}

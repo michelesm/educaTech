@@ -12,4 +12,5 @@ urlpatterns = [
     path('professor/<pk>/delete/', views.ProfessorDeleteView.as_view(), name='professor_delete'),
     path('professor/<pk>/edit/', views.ProfessorEditView.as_view(), name='professor_edit'),
 
+
 ]

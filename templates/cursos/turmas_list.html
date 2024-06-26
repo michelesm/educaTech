@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <div class="container">
+    <div class="card">
+      <span>Filtrar:</span><br>
+      <a href="#">Por curso</a><br>
+      <a href="#">Por Turma</a><br>
+      <a href="#">Por Ano</a>
+    </div>
+
+    <div class="card">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Curso</th>
+            <th>Turma</th>
+            <th>Opções</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for curso, turmas in turmas %}
+          <tr>
+            <td>{{ curso.nome_curso }}</td>
+              {% for turma in turmas %}
+              <td>{{ turma.turma_nome }} ({{ turma.get_horario_display }})</td>
+              <td>
+                <a href="#" onclick="document.getElementById('modal-detail-{{ turma.pk }}').showModal()">Ver detalhes</a>
+                <dialog id="modal-detail-{{ turma.pk }}">
+                  <div style="text-align: center;">
+                    {% include 'cursos/turma_detail.html' with turma=turma %}
+                  </div>
+                  <button style="display: block; margin: 0 auto;" onclick="document.getElementById('modal-detail-{{ turma.pk }}').close()">Fechar</button>
+                </dialog>
+              {% endfor %}
+            </td>
+            <td>
+              {% for turma in turmas %}
+                <a href="">Editar</a>
+              {% endfor %}
+            </td>
+            <td>
+              {% for turma in turmas %}
+                <a href="">Excluir</a>
+              {% endfor %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="button-container">
+        <a href="" class="button">Cadastrar nova turma</a><br>
+      </div>
+      <div class="button-container">
+        <a href="{% url 'home' %}" class="button">Voltar</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
